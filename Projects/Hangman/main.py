@@ -10,14 +10,21 @@ placeholder = ""
 for position in range(word_len):
     placeholder += "_"
 
+game_over = False
 
-display = ""
-guess_letter = input("Guess a latter:").lower()
+while not game_over:
+    guess_letter = input("Guess a latter:").lower()
 
-for letter in rand_word:
-    if letter == guess_letter:
-        display += letter
-    else:
-        display += "_"
+    display = ""
 
-print(display)
+    for letter in rand_word:
+        if letter == guess_letter:
+            display += letter
+        else:
+            display += "_"
+
+    print(display)
+
+    if "_" not in display:
+        game_over = True
+        print("You win.")
