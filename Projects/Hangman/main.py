@@ -11,6 +11,7 @@ for position in range(word_len):
     placeholder += "_"
 
 game_over = False
+correct_letters = []
 
 while not game_over:
     guess_letter = input("Guess a latter:").lower()
@@ -19,6 +20,9 @@ while not game_over:
 
     for letter in rand_word:
         if letter == guess_letter:
+            display += letter
+            correct_letters.append(guess_letter)
+        elif letter in correct_letters:
             display += letter
         else:
             display += "_"
