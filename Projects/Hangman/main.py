@@ -1,65 +1,9 @@
 import random
+from word_list import word_list
+from art import stages
+from art import logo
 
-stages = ['''
-  +---+
-  |   |
-  O   |
- (|)  |
- ( )  |
-      |
-=========
-''', '''
-  +---+
-  |   |
-  O   |
- (|)  |
- (    |
-      |
-=========
-''', '''
-  +---+
-  |   |
-  O   |
- (|)  |
-      |
-      |
-=========
-''', '''
-  +---+
-  |   |
-  O   |
- (|   |
-      |
-      |
-=========
-''', '''
-  +---+
-  |   |
-  O   |
-  |   |
-      |
-      |
-=========
-''', '''
-  +---+
-  |   |
-  O   |
-      |
-      |
-      |
-=========
-''', '''
-  +---+
-  |   |
-      |
-      |
-      |
-      |
-=========
-''']
-
-world_list = ['camel', 'apple', 'phone', 'shoe', 'fish', 'dog']
-rand_word = random.choice(world_list)
+rand_word = random.choice(word_list)
 word_len = len(rand_word)
 
 print(f"{rand_word},{word_len}")
@@ -72,9 +16,13 @@ game_over = False
 correct_letters = []
 lives = 6
 
-while not game_over:
-    guess_letter = input("Guess a latter:").lower()
+print(logo)
 
+while not game_over:
+    print(f"*****************{lives}/6 LIVES LEFT*****************")
+    guess_letter = input("Guess a latter:").lower()
+    if guess_letter in correct_letters:
+        print("You have already guess this letter")
     display = ""
 
     for letter in rand_word:
@@ -90,12 +38,13 @@ while not game_over:
 
     if guess_letter not in rand_word:
         lives -= 1
+        print(f"You guessed {guess_letter}, that's not in the word. You lose a life")
         if lives == 0:
             game_over = True
-            print("You Lose!")
+            print(f"*****************IT WAS {rand_word}! YOU LOSE*****************")
 
     if "_" not in display:
         game_over = True
-        print("You Win!")
+        print("*****************YOU WIN*****************")
 
     print(stages[lives])
