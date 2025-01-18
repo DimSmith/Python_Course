@@ -1,5 +1,7 @@
+name1 = input("Type the First Full Name:\n").lower()
+name2 = input("Type the Second Full Name:\n").lower()
 def calculate_love_score(name1, name2):
-    print(f"{name1},{name2}")
+
 
     combined_names = name1 + name2
     lower_names = combined_names.lower()
@@ -28,6 +30,6 @@ def calculate_love_score(name1, name2):
     true_love = (true_count*10) + love_count
     print(f"Love Score:{true_love}")
 
-calculate_love_score("Kanye West", "Kim Kardashian")
+calculate_love_score(name1,name2)
 
 #calculate_love_score(name1 = "Dmitry Kuznets", name2 = "Viktoria Motznie")
